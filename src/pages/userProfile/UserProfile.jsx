@@ -1,9 +1,7 @@
 // src/components/UserProfile.js
-import { collection, doc, getDoc } from "firebase/firestore";
-import React, { useEffect,  } from "react";
+import React from "react";
 import { FaUserCircle } from "react-icons/fa";
-import { fireDB } from "../../firebase/FirebaseConfig";
-import { call } from "redux-saga/effects";
+
 
 const user = JSON.parse(localStorage.getItem("user"));
 const UserProfile = () => {

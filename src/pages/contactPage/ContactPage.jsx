@@ -1,11 +1,9 @@
-// components/ContactForm.js
 import React, { useEffect, useState } from "react";
 import Layout from "../../components/layout/Layout";
 import TOAST from "../../components/toast/Toast";
 import DeveloperImage from "../../assets/developer.jpeg";
 import { useDispatch, useSelector } from "react-redux";
 import { addMessageDataInit } from "../../store/features/UserContactMessageSlice";
-import Loader from "../../components/loader/Loader";
 export default function ContactPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");

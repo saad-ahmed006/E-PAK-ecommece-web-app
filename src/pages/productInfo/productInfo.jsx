@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 import Layout from "../../components/layout/Layout";
-import EmptyImage from "../../assets/720x400.png";
 import {
-  FaFacebook,
   FaFacebookF,
   FaHeart,
   FaRegStar,

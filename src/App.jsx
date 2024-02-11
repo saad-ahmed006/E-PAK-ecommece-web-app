@@ -1,9 +1,5 @@
 import React, { useEffect } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import Home from "./pages/home/Home";
 import Order from "./pages/order/Order";
@@ -27,6 +23,7 @@ import AdminProtectedRoute from "./components/protectedRoute/AdminProtectedRoute
 import UserProtectedRoute from "./components/protectedRoute/UserProtectedRoute";
 import ContactPage from "./pages/contactPage/ContactPage";
 import AboutPage from "./pages/aboutPage/AboutUsPage";
+import Category from "./pages/category/Category";
 const user = JSON.parse(localStorage.getItem("user"));
 const cartCollectionRef = collection(fireDB, "Cart " + user?.user?.uid);
 
@@ -78,6 +75,7 @@ function App() {
           <Route path="/productinfo/:id" element={<ProductInfo />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/category/:id" element={<Category />} />
           <Route
             path="/addproduct"
             element={
@@ -94,6 +92,7 @@ function App() {
               </AdminProtectedRoute>
             }
           />
+
           <Route path="/*" element={<ErrorPage />} />
         </Routes>
         <ToastContainer />
@@ -103,21 +102,3 @@ function App() {
 }
 
 export default App;
-
-// export const UserProtectedRoute = ({ children }) => {
-//   const user = localStorage.getItem("user");
-//   if (user) {
-//     return children;
-//   } else {
-//     return Navigate("/login");
-//   }
-// };
-// export const AdminProtectedRoute = ({ children }) => {
-//   const admin = JSON.parse(localStorage.getItem("user"));
-//   // const admin = localStorage.getItem("user");
-//   if (admin?.user?.email === "admin@gmail.com") {
-//     return children;
-//   } else {
-//     return Navigate("/login");
-//   }
-// };
