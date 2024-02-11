@@ -1,20 +1,18 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../../components/layout/Layout";
-import EmptyImage from "../../assets/720x400.png";
 import { useDispatch, useSelector } from "react-redux";
 import Modal from "../../components/modal/Modal";
 import { MdDelete } from "react-icons/md";
 import {
   decrementProductInit,
-  // getCartProductInit,
   incrementProductInit,
 } from "../../store/features/CartSlice";
 import { Link, useNavigate } from "react-router-dom";
 import { MdAdd } from "react-icons/md";
-import { RiDeleteBin6Line, RiSubtractFill } from "react-icons/ri";
+import { RiSubtractFill } from "react-icons/ri";
 import TOAST from "../../components/toast/Toast";
 import { fireDB } from "../../firebase/FirebaseConfig";
-import { collection, deleteDoc, doc } from "firebase/firestore";
+import {  deleteDoc, doc } from "firebase/firestore";
 import { userOrderDataInit } from "../../store/features/OrderPlaceSlice";
 import Loader from "../../components/loader/Loader";
 const user = JSON.parse(localStorage.getItem("user"));

@@ -4,9 +4,6 @@ import { Carousel } from "react-responsive-carousel";
 import Carasoul_Img_1 from "../../assets/carasoul-img-1.jpg";
 import Carasoul_Img_2 from "../../assets/carasoul-img-2.jpg";
 import Carasoul_Img_3 from "../../assets/carasoul-img-3.jpg";
-import Carasoul_Img_4 from "../../assets/carasoul-img-4.jpg";
-import Carasoul_Img_5 from "../../assets/carasoul-img-5.jpg";
-import Carasoul_Img_6 from "../../assets/carasoul-img-5.jpg";
 import { BiArrowBack } from "react-icons/bi";
 import { Link } from "react-router-dom";
 
