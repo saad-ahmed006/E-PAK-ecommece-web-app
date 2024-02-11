@@ -8,10 +8,12 @@ const user = JSON.parse(localStorage.getItem("user"));
 
 function Order() {
   const { mode } = useSelector((state) => state.AppStateSlice);
-  const {loading, userOrderData } = useSelector((state) => state.OrderPlaceSlice);
+  const { loading, userOrderData } = useSelector(
+    (state) => state.OrderPlaceSlice
+  );
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getUserOrderDataInit({ uid: user.user.uid }));
+    dispatch(getUserOrderDataInit({ uid: user?.user?.uid }));
   }, []);
 
   return (
@@ -103,7 +105,6 @@ function Order() {
             </div>
           </div>
         </div>
-
       </Wrapper>
     </Layout>
   );
