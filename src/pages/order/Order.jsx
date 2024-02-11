@@ -11,7 +11,7 @@ function Order() {
   const {loading, userOrderData } = useSelector((state) => state.OrderPlaceSlice);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getUserOrderDataInit({ uid: user.user.uid }));
+    dispatch(getUserOrderDataInit({ uid: user?.user?.uid }));
   }, []);
 
   return (
