@@ -3,17 +3,19 @@ import Layout from "../../components/layout/Layout";
 import Wrapper from "../../components/wrapper/Wrapper";
 import Filter from "../../components/filter/Filter";
 import ProductCard from "../../components/productCard/ProductCard";
-import {useSelector } from "react-redux";
+import {useDispatch, useSelector } from "react-redux";
+import { getProductDataInit } from "../../store/features/ProductsSlice";
 
 export default function AllProducts() {
   const { data, loading } = useSelector((state) => state.ProductsSlice);
   const [searchProduct, setSearchProduct] = useState("");
-  const [Filtercategory, setFilterCategory] = useState("");
-  const [filterPrice, setFilterPrice] = useState("");
+  const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(getProductDataInit());
     window.scrollTo(0, 0);
   }, []);
+
 
   return (
     <Layout>
