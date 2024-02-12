@@ -29,7 +29,7 @@ export function* getSingleProductDataToFireStore(action) {
   try {
     const product = doc(productRef, action.payload.uid);
     const singleProduct = yield call(getDoc, product);
-    yield put(getSingleProductDataSuccess(singleProduct.data()));
+    yield put(getSingleProductDataSuccess({...singleProduct.data(),id:singleProduct.id}));
   } catch (error) {
     yield put(getSingleProductDataFail(error));
   }

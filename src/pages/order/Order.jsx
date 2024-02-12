@@ -8,11 +8,21 @@ const user = JSON.parse(localStorage.getItem("user"));
 
 function Order() {
   const { mode } = useSelector((state) => state.AppStateSlice);
-  const {loading, userOrderData } = useSelector((state) => state.OrderPlaceSlice);
+  const { loading, userOrderData } = useSelector(
+    (state) => state.OrderPlaceSlice
+  );
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getUserOrderDataInit({ uid: user.user.uid }));
   }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+ 
+
+  let grandTotal = 0;
+  userOrderData?.map((item) => (grandTotal += item?.TotalProductPrice));
 
   return (
     <Layout>
@@ -34,7 +44,10 @@ function Order() {
                       imageUrl,
                       date,
                       category,
+                      qty,
+                      TotalProductPrice,
                     } = OrderProduct;
+
                     return (
                       <div
                         className="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start"
@@ -77,7 +90,38 @@ function Order() {
                               >
                                 Price:{" "}
                               </span>
-                              {price}
+                              PKR {Math.floor(price).toLocaleString("en-US")}
+                            </p>
+                            <p
+                              className="mt-1 text-xs text-gray-700"
+                              style={{ color: mode === "dark" ? "white" : "" }}
+                            >
+                              <span
+                                className="mt-1 text-md font-bold text-black"
+                                style={{
+                                  color: mode === "dark" ? "white" : "",
+                                }}
+                              >
+                                Total-Price:
+                              </span>
+                              PKR{" "}
+                              {Math.floor(TotalProductPrice).toLocaleString(
+                                "en-US"
+                              )}
+                            </p>
+                            <p
+                              className="mt-1 text-xs text-gray-700"
+                              style={{ color: mode === "dark" ? "white" : "" }}
+                            >
+                              <span
+                                className="mt-1 text-md font-bold text-black"
+                                style={{
+                                  color: mode === "dark" ? "white" : "",
+                                }}
+                              >
+                                Quantity:{" "}
+                              </span>
+                              {qty}
                             </p>
                             <p
                               className="mt-1 text-xs text-gray-700"
@@ -100,10 +144,25 @@ function Order() {
                   })}
                 </>
               )}
+              <div className="flex justify-end my-4 ">
+                <p
+                  className="mt-1 md:text-xl text-gray-700"
+                  style={{ color: mode === "dark" ? "white" : "" }}
+                >
+                  <span
+                    className="mt-1 md:text-xl font-bold text-black"
+                    style={{
+                      color: mode === "dark" ? "white" : "",
+                    }}
+                  >
+                    Total:{" "}
+                  </span>
+                  PKR {Math.floor(grandTotal).toLocaleString("en-US")}
+                </p>
+              </div>
             </div>
           </div>
         </div>
-
       </Wrapper>
     </Layout>
   );
