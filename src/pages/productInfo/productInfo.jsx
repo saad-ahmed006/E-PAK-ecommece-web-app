@@ -104,8 +104,8 @@ function ProductInfo() {
                   {singleProductData?.description}
                 </p>
 
-                <div className="flex">
-                  <span className="title-font font-medium text-2xl text-gray-900">
+                <div className="flex items-center">
+                  <span className="title-font font-medium text-md md:text-2xl text-gray-900">
                     PKR{" "}
                     {Math.floor(singleProductData?.price).toLocaleString(
                       "en-US"
@@ -115,7 +115,7 @@ function ProductInfo() {
                     onClick={() => {
                       handleAddToCart(singleProductData);
                     }}
-                    className="flex ml-auto text-white bg-[#FCC50B] border-0 py-2 px-6 focus:outline-none hover:bg-[#fdc50d] rounded"
+                    className="flex ml-auto text-white bg-[#FCC50B] border-0 py-2 px-2 md:py-2 md:px-6 focus:outline-none hover:bg-[#fdc50d] rounded"
                   >
                     Add To Cart
                   </button>
