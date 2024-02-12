@@ -24,7 +24,7 @@ export function* OrderPlaceToFireStore(action) {
       });
     });
     yield addDoc(collection(fireDB, "AdminPageOrderData"), action.payload.data);
-    
+
     yield action.payload.data.cart.map((item) =>
       deleteDoc(doc(fireDB, "Cart " + action.payload.uid, item.id))
     );

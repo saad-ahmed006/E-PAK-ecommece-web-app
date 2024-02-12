@@ -27,24 +27,6 @@ export function* AddToCartDataToFireStore(action) {
   }
 }
 
-// export function* GetCartDataFromFireStore(action) {
-//   try {
-    // const querySnapshot = yield call(
-    //   getDocs,
-    //   collection(fireDB, "Cart " + action.payload.uid)
-    // );
-    // const productsData = yield querySnapshot.docs.map((doc) => ({
-    //   ...doc.data(),
-    //   id: doc.id,
-    // }));
-  
-    // yield put(getCartProductSuccess(productsData));
-    
-  // } catch (error) {
-    // yield put(getCartProductFail(error));
-  // }
-// }
-
 export function* IncrementFromCart(action) {
   // console.log(action.payload);
   try {
