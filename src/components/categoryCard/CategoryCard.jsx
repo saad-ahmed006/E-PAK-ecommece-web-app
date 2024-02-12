@@ -12,8 +12,8 @@ export default function CategoryCard({ CategoryValues }) {
         const id = value.toLowerCase();
         return (
           <Link to={`/category/${id}`} key={index}>
-            <div className="md:w-[250px] w-[90px] md:h-[120px] h-[100px]  flex flex-col justify-center  items-center mr-7 ">
-              <div className="md:w-[250px] w-[90px] md:h-[120px] h-[100px] rounded-md  bg-[#FCC50B] border-y-2 border-black flex flex-row justify-center items-center">
+            <div className="md:w-[250px] w-[100px] md:h-[120px] h-[100px]   flex flex-col justify-center  items-center my-2 ">
+              <div className="md:w-[250px] w-[100px] md:h-[120px] h-[100px] rounded-md  bg-[#FCC50B] border-y-2 border-black flex flex-row justify-center items-center">
                 {value === "Laptop" ? (
                   <FaLaptop size={40} />
                 ) : value === "Smart-Watch" ? (

@@ -36,7 +36,6 @@ export default function Home() {
       <Layout>
         <HeroSection />
         <Wrapper>
-
           <section>
             <div className="container px-5 md:px-0 py-8 md:py-5 mx-auto">
               <div className="lg:w-1/2 w-full mb-6 lg:mb-3">
@@ -49,16 +48,17 @@ export default function Home() {
                 <div className="h-1 w-20 bg-[#FCC50B] rounded"></div>
               </div>
 
-              <div className="flex flex-row justify-between flex-wrap ">
+              <div className="flex flex-row md:justify-between flex-wrap justify-around">
                 <CategoryCard CategoryValues={uniqueCategoryValues} />
               </div>
             </div>
           </section>
-
-          <Filter
-            searchProduct={searchProduct}
-            setSearchProduct={setSearchProduct}
-          />
+          <div className="mx-5 md:mx-0">
+            <Filter
+              searchProduct={searchProduct}
+              setSearchProduct={setSearchProduct}
+            />
+          </div>
           <section className="text-gray-600 body-font ">
             <div className="container px-5 md:px-0 py-8 md:py-10 mx-auto">
               <div className="lg:w-1/2 w-full mb-6 lg:mb-6">
