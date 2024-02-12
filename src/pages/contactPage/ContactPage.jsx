@@ -4,22 +4,34 @@ import TOAST from "../../components/toast/Toast";
 import DeveloperImage from "../../assets/developer.jpeg";
 import { useDispatch, useSelector } from "react-redux";
 import { addMessageDataInit } from "../../store/features/UserContactMessageSlice";
+import { useNavigate } from "react-router-dom";
+const user = JSON.parse(localStorage.getItem("user"));
 export default function ContactPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [mobileNumber, setMobileNumber] = useState("");
   const [message, setMessage] = useState("");
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (name == "" || email == "" || mobileNumber == "" || message == "") {
-      return TOAST.Toast_Error("All fields are required");
-    } else {
-      TOAST.Toast_Success("Thanks /The form was submit successfully..");
-      const messageObject = { name, email, mobileNumber, message };
-      dispatch(addMessageDataInit(messageObject));
+    if (user) {
+      
+      if (name == "" || email == "" || mobileNumber == "" || message == "") {
+        return TOAST.Toast_Error("All fields are required");
+      } else {
+        TOAST.Toast_Success("Thanks /The form was submit successfully..");
+        const messageObject = { name, email, mobileNumber, message };
+        dispatch(addMessageDataInit(messageObject));
+      }
+      setName("");
+      setEmail("");
+      setMessage("");
+      setMobileNumber("");
+    } 
+    else {
+      navigate("/login");
     }
-    setName("");setEmail(""); setMessage(""); setMobileNumber("");
   };
   useEffect(() => {
     window.scrollTo(0, 0);
