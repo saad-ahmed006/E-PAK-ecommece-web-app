@@ -7,6 +7,7 @@ import { addMessageDataInit } from "../../store/features/UserContactMessageSlice
 import { useNavigate } from "react-router-dom";
 const user = JSON.parse(localStorage.getItem("user"));
 export default function ContactPage() {
+  const { mode } = useSelector((state) => state.AppStateSlice);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [mobileNumber, setMobileNumber] = useState("");
@@ -16,7 +17,6 @@ export default function ContactPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (user) {
-      
       if (name == "" || email == "" || mobileNumber == "" || message == "") {
         return TOAST.Toast_Error("All fields are required");
       } else {
@@ -28,8 +28,7 @@ export default function ContactPage() {
       setEmail("");
       setMessage("");
       setMobileNumber("");
-    } 
-    else {
+    } else {
       navigate("/login");
     }
   };
@@ -40,13 +39,16 @@ export default function ContactPage() {
     <Layout>
       {/* <Wrapper> */}
       <>
-        <div className="bg-gray-100 py-12">
+        <div className=" py-12">
           <div className="container mx-auto px-4">
             <div className="text-center mb-8">
-              <h1 className="text-3xl md:text-5xl font-bold text-gray-800">
+              <h1
+                className="text-3xl md:text-5xl font-bold "
+                style={{ color: mode === "dark" ? "white" : "" }}
+              >
                 Contact Us
               </h1>
-              <p className="text-gray-600 mt-2">We'd love to hear from you!</p>
+              <p className=" mt-2" style={{ color: mode === "dark" ? "white" : "" }}>We'd love to hear from you!</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
               <div className="bg-white p-6 rounded-lg shadow-md">

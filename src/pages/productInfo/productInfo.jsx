@@ -84,19 +84,22 @@ function ProductInfo() {
             <Loader />
           </div>
         ) : (
-          <section className="text-gray-600 body-font overflow-hidden">
+          <section className=" body-font overflow-hidden">
             <div className="container px-5 py-6 mx-auto">
-              <div className="lg:w-4/5 mx-auto flex flex-wrap  items-center justify-center">
+              <div
+                className="lg:w-4/5 mx-auto flex flex-wrap  items-center justify-center"
+                style={{ color: mode === "dark" ? "white" : "" }}
+              >
                 <img
                   alt="ecommerce"
                   className="w-full md:w-1/2  mx-auto md:mx-0 md:h-[500px] rounded "
                   src={singleProductData?.imageUrl}
                 />
                 <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-                  <h2 className="text-sm title-font text-gray-500 tracking-widest">
+                  <h2 className="text-sm title-font  tracking-widest">
                     {singleProductData?.title?.split(" ")?.[0]}
                   </h2>
-                  <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
+                  <h1 className=" text-3xl title-font font-medium mb-1">
                     {singleProductData?.title}
                   </h1>
                   <div className="flex mb-4">
@@ -107,16 +110,16 @@ function ProductInfo() {
                       <FaStarHalfAlt className="text-yellow-500" />
                       <FaRegStar className="text-yellow-500" />
 
-                      <span className="text-gray-600 ml-3">4 Reviews</span>
+                      <span className=" ml-3">4 Reviews</span>
                     </span>
                     <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s">
-                      <a className="text-gray-500 px-1">
+                      <a className=" px-1">
                         <FaFacebookF className="w-5 h-5" />
                       </a>
-                      <a className="text-gray-500 px-1">
+                      <a className=" px-1">
                         <FaTwitter className="w-5 h-5" />
                       </a>
-                      <a className="text-gray-500 px-1">
+                      <a className=" px-1">
                         <AiFillMessage className="w-5 h-5" />
                       </a>
                     </span>
@@ -126,7 +129,7 @@ function ProductInfo() {
                   </p>
 
                   <div className="flex items-center">
-                    <span className="title-font font-medium text-md md:text-2xl text-gray-900">
+                    <span className="title-font font-medium text-md md:text-2xl ">
                       PKR{" "}
                       {Math.floor(singleProductData?.price).toLocaleString(
                         "en-US"
@@ -136,7 +139,7 @@ function ProductInfo() {
                       onClick={() => {
                         handleAddToCart(singleProductData);
                       }}
-                      className="flex ml-auto text-white bg-[#FCC50B] border-0 py-2 px-2 md:py-2 md:px-6 focus:outline-none hover:bg-[#fdc50d] rounded"
+                      className="flex ml-auto text-white bg-[#FCC50B] md:text-lg border-0 py-2 px-2 md:py-2 md:px-6 focus:outline-none hover:bg-[#fdc50d] rounded"
                     >
                       Add To Cart
                     </button>

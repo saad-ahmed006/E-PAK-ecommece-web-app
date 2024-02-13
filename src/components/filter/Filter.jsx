@@ -7,7 +7,7 @@ function Filter({
   setSearchQuery,
   filterCategory,
   setFilterCategory,
-  handleResetFilters
+  handleResetFilters,
 }) {
   const { mode } = useSelector((state) => state.AppStateSlice);
   const [uniqueCategory, setUniqueCategory] = useState([]);
@@ -29,11 +29,10 @@ function Filter({
         >
           <div className="flex flex-row justify-between items-star my-3">
             <div>
-            <h1 className="sm:text-3xl text-2xl font-medium title-font  text-gray-900 ">
-              Search Product
-            </h1>{" "}
-            <div className="h-1 w-20 bg-[#FCC50B] rounded"></div>
-
+              <h1 className="sm:text-3xl text-2xl font-medium title-font  text-gray-900 ">
+                Search Product
+              </h1>{" "}
+              <div className="h-1 w-20 bg-[#FCC50B] rounded"></div>
             </div>
             <p
               className="text-gray-700 cursor-pointer"
@@ -62,7 +61,7 @@ function Filter({
               }}
             />
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">
+          <div className="grid  md:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">
             <select
               value={filterCategory}
               onChange={(e) => {
@@ -75,7 +74,11 @@ function Filter({
               }}
             >
               {uniqueCategory?.map((category, index) => {
-                return <option key={index} value={category}>{category}</option>;
+                return (
+                  <option key={index} value={category}>
+                    {category}
+                  </option>
+                );
               })}
             </select>
           </div>
