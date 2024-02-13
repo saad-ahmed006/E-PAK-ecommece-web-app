@@ -83,7 +83,7 @@ export default function ContactPage() {
           </div>
 
           <div className="flex flex-wrap justify-center mt-20 mx-4">
-            <div className="lg:w-1/2 text-center bg-gray-100 p-8" id="body">
+            <div className="lg:w-1/2 text-center bg-gray-100 p-2 md:p-8" id="body">
               <h2 className="text-4xl font-bold mb-4">
                 Let's talk about everything!
               </h2>
@@ -104,7 +104,7 @@ export default function ContactPage() {
               </p>
             </div>
 
-            <div className="lg:w-1/2 bg-gray-100 p-8 w-full">
+            <div className="lg:w-1/2 bg-gray-100 p-2 md:p-8 w-full">
               <form>
                 <div className="mb-4">
                   <label for="fullName" className="block text-sm font-bold">
@@ -113,7 +113,7 @@ export default function ContactPage() {
                   <input
                     type="text"
                     id="fullName"
-                    className="w-full p-2 border border-gray-300 outline-none rounded-sm"
+                    className="w-full p-2 border border-gray-300 outline-none rounded-md"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                   />
@@ -125,7 +125,7 @@ export default function ContactPage() {
                   <input
                     type="email"
                     id="email"
-                    className="w-full p-2 border border-gray-300 outline-none rounded-sm"
+                    className="w-full p-2 border border-gray-300 outline-none rounded-md"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
@@ -137,7 +137,7 @@ export default function ContactPage() {
                   <input
                     type="text"
                     id="phone"
-                    className="w-full p-2 border border-gray-300 outline-none rounded-sm"
+                    className="w-full p-2 border border-gray-300 outline-none rounded-md"
                     value={mobileNumber}
                     onChange={(e) => setMobileNumber(e.target.value)}
                   />
@@ -149,13 +149,13 @@ export default function ContactPage() {
                   <textarea
                     id="message"
                     rows="5"
-                    className="w-full p-2 border border-gray-300 outline-none rounded-sm"
+                    className="w-full p-2 border border-gray-300 outline-none rounded-md"
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                   ></textarea>
                 </div>
                 <button
-                  className="bg-[#FCC50B] w-full py-2 text-xl  rounded-sm"
+                  className="bg-[#FCC50B] w-full py-2 text-xl  rounded-full font-bold "
                   onClick={handleSubmit}
                 >
                   Submit
