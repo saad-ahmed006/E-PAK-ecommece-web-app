@@ -13,11 +13,15 @@ import CategoryCard from "../../components/categoryCard/CategoryCard";
 export default function Home() {
   const { data, loading } = useSelector((state) => state.ProductsSlice);
   const { mode } = useSelector((state) => state.AppStateSlice);
-  const [searchProduct, setSearchProduct] = useState("");
   const [uniqueCategoryValues, setUniqueCategoryValues] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filterCategory, setFilterCategory] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const handleResetFilters = () => {
+    setSearchQuery("");
+    setFilterCategory("");
+  };
   useEffect(() => {
     dispatch(getProductDataInit());
     window.scrollTo(0, 0);
@@ -31,6 +35,7 @@ export default function Home() {
     const uniqueCategories = Array.from(uniqueCategoriesSet);
     setUniqueCategoryValues(uniqueCategories);
   }, [data]);
+
   return (
     <>
       <Layout>
@@ -53,10 +58,15 @@ export default function Home() {
               </div>
             </div>
           </section>
+          {/* filters */}
           <div className="mx-5 md:mx-0">
             <Filter
-              searchProduct={searchProduct}
-              setSearchProduct={setSearchProduct}
+              searchQuery={searchQuery}
+              setSearchQuery={setSearchQuery}
+              filterCategory={filterCategory}
+              setFilterCategory={setFilterCategory}
+              handleResetFilters={handleResetFilters}
+              data={data}
             />
           </div>
           <section className="text-gray-600 body-font ">
@@ -70,12 +80,31 @@ export default function Home() {
                 </h1>
                 <div className="h-1 w-20 bg-[#FCC50B] rounded"></div>
               </div>
+              {/* products */}
 
-              <ProductCard
-                data={data}
-                searchProduct={searchProduct}
-                loading={loading}
-              />
+              <div className="flex flex-wrap md:-m-4 -m-2 ">
+                {data
+                  ?.filter((obj) =>
+                    obj?.title?.toLowerCase().includes(searchQuery)
+                  )
+                  .filter((obj) =>
+                    obj?.category
+                      .toLowerCase()
+                      .includes(filterCategory.toLowerCase())
+                  )
+                  .map((item) => {
+                    const { title, price, imageUrl, id } = item;
+                    return (
+                      <ProductCard
+                        key={id}
+                        title={title}
+                        price={price}
+                        imageUrl={imageUrl}
+                        id={id}
+                      />
+                    );
+                  })}
+              </div>
             </div>
           </section>{" "}
           <Track />

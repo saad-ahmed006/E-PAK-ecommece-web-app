@@ -36,9 +36,21 @@ export default function Category() {
               </h1>
               <div className="h-1 w-20 bg-[#FCC50B] rounded"></div>
             </div>
+            <div className="flex flex-wrap md:-m-4 -m-2 ">
 
-            <ProductCard data={filterData} searchProduct={""} />
-          </div>
+          {filterData?.map((item) => {
+                const { title, price, imageUrl, id } = item;
+                return (
+                  <ProductCard
+                    title={title}
+                    price={price}
+                    imageUrl={imageUrl}
+                    id={id}
+                  />
+                );
+              })}      
+                  </div>
+                  </div>
         </section>{" "}
       </Layout>
     </>

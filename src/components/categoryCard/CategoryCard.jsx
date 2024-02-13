@@ -20,8 +20,10 @@ export default function CategoryCard({ CategoryValues }) {
                   <BsSmartwatch size={40} />
                 ) : value === "Speaker" ? (
                   <BsFillSpeakerFill size={40} />
-                ) : (
+                ) : value === "Mobile" ? (
                   <FaMobile size={40} />
+                ) : (
+                  <h1>Icon Upload</h1>
                 )}
               </div>
               <p

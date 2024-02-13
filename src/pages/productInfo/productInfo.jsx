@@ -33,7 +33,6 @@ function ProductInfo() {
   const { mode } = useSelector((state) => state.AppStateSlice);
   const { data } = useSelector((state) => state.ProductsSlice);
   const [relatedProduct, setRelatedProduct] = useState([]);
-  const [searchProduct, setSearchProduct] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -154,7 +153,6 @@ function ProductInfo() {
           <div className="container px-5 md:px-0 py-8 md:py-16 mx-auto">
             <RelatedProducts
               relatedProduct={relatedProduct}
-              searchProduct={searchProduct}
               mode={mode}
             />
           </div>
@@ -166,7 +164,7 @@ function ProductInfo() {
 
 export default ProductInfo;
 
-export function RelatedProducts({ relatedProduct, searchProduct, mode }) {
+export function RelatedProducts({ relatedProduct, mode }) {
   return (
     <>
       <div className="lg:w-1/2 w-full mb-6 lg:mb-3">
@@ -179,7 +177,17 @@ export function RelatedProducts({ relatedProduct, searchProduct, mode }) {
         <div className="h-1 w-20 bg-[#FCC50B] rounded"></div>
       </div>
 
-      <ProductCard data={relatedProduct} searchProduct={searchProduct} />
-    </>
+      {relatedProduct?.map((item) => {
+                    const { title, price, imageUrl, id } = item;
+                    return (
+                      <ProductCard
+                        key={id}
+                        title={title}
+                        price={price}
+                        imageUrl={imageUrl}
+                        id={id}
+                      />
+                    );
+                  })}    </>
   );
 }
