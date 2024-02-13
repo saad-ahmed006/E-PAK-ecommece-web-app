@@ -85,11 +85,11 @@ function ProductInfo() {
           </div>
         ) : (
           <section className="text-gray-600 body-font overflow-hidden">
-            <div className="container px-5 py-20 mx-auto">
-              <div className="lg:w-4/5 mx-auto flex flex-wrap">
+            <div className="container px-5 py-6 mx-auto">
+              <div className="lg:w-4/5 mx-auto flex flex-wrap  items-center justify-center">
                 <img
                   alt="ecommerce"
-                  className="w-1/2 mx-auto md:mx-0  lg:h-auto  md:h-[400px] rounded"
+                  className="w-full md:w-1/2  mx-auto md:mx-0 md:h-[500px] rounded "
                   src={singleProductData?.imageUrl}
                 />
                 <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
@@ -151,10 +151,28 @@ function ProductInfo() {
         )}
         <section className="text-gray-600 body-font mt-">
           <div className="container px-5 md:px-0 py-8 md:py-16 mx-auto">
-            <RelatedProducts
-              relatedProduct={relatedProduct}
-              mode={mode}
-            />
+            <div className="lg:w-1/2 w-full mb-6 lg:mb-3">
+              <h1
+                className="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900"
+                style={{ color: mode === "dark" ? "white" : "" }}
+              >
+                Related Products
+              </h1>
+              <div className="h-1 w-20 bg-[#FCC50B] rounded"></div>
+            </div>
+            <div className="flex flex-wrap md:-m-4 -m-2 ">
+              {relatedProduct?.map((item) => {
+                const { title, price, imageUrl, id } = item;
+                return (
+                  <ProductCard
+                    title={title}
+                    price={price}
+                    imageUrl={imageUrl}
+                    id={id}
+                  />
+                );
+              })}{" "}
+            </div>
           </div>
         </section>
       </Wrapper>
@@ -163,31 +181,3 @@ function ProductInfo() {
 }
 
 export default ProductInfo;
-
-export function RelatedProducts({ relatedProduct, mode }) {
-  return (
-    <>
-      <div className="lg:w-1/2 w-full mb-6 lg:mb-3">
-        <h1
-          className="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900"
-          style={{ color: mode === "dark" ? "white" : "" }}
-        >
-          Related Products
-        </h1>
-        <div className="h-1 w-20 bg-[#FCC50B] rounded"></div>
-      </div>
-
-      {relatedProduct?.map((item) => {
-                    const { title, price, imageUrl, id } = item;
-                    return (
-                      <ProductCard
-                        key={id}
-                        title={title}
-                        price={price}
-                        imageUrl={imageUrl}
-                        id={id}
-                      />
-                    );
-                  })}    </>
-  );
-}
